@@ -1,0 +1,27 @@
+## YAML Template.
+---
+language:   java
+
+jdk:
+    - oraclejdk8
+
+branches:
+  only:
+    - master
+build:
+  on_success:
+    - mvn clean
+    - mvn test
+    
+integrations:                               
+  notifications:
+    - integrationName: email
+      type: email
+      recipients:
+        - joeohanlon56@gmail.com
+      on_success: always
+      on_failure: always
+      on_cancel: never
+      on_start: never
+      on_pull_request: never
+
